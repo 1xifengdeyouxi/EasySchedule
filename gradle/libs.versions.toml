@@ -1,0 +1,139 @@
+[versions]
+agp = "8.1.2"
+kotlin = "1.9.20"
+coreKtx = "1.10.1"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.6.1"
+material = "1.10.0"
+activity = "1.8.0"
+constraintlayout = "2.1.4"
+roomVersion = "2.5.1"
+kotlinxCoroutines = "1.5.1"
+lifecycle = "2.4.1"
+navigation = "2.3.5"
+navigationArg = "2.8.9"
+jsoups = "1.21.1"
+okhttp = "4.9.0"
+gson = "2.8.9"
+retrofit = "2.11.0"
+baceRecyclerview = "4.1.4"
+glide = "4.16.0"
+toasty = "1.5.2"
+numberPickerView = "1.2.0"
+colorpicker = "1.1.0"
+csv = "1.10.0"
+textDrawable = "1.0.3"
+stickyHeadersRecyclerView = "0.4.3"
+biweekly = "0.6.8"
+appCenterSdkVersion = "5.0.6"
+quickSideBar = "1.0.3"
+targetTooltip = "2.0.3"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+#room
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion"}
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion"}
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+
+#coroutine
+jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+
+#lifecycle
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+
+#navigation
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+
+#kapt
+lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycle"}
+
+#    implementation 'org.jsoup:jsoup:1.14.3'
+json = { group = "org.jsoup", name = "jsoup", version.ref = "jsoups" }
+#okhttp
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+#implementation 'com.google.code.gson:gson:2.12.1'
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+#implementation 'com.squareup.retrofit2:retrofit:(insert latest version)'
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+
+#implementation "io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.4"
+androidx-baseRecyclerViewAdapterHelper = { group = "io.github.cymchad", name = "BaseRecyclerViewAdapterHelper4", version.ref = "baceRecyclerview" }
+#implementation 'cn.carbswang.android:NumberPickerView:1.2.0'
+androidx-numberPickerView = { module = "cn.carbswang.android:NumberPickerView",  version.ref = "numberPickerView" }
+
+#implementation 'com.jaredrummler:colorpicker:1.1.0'
+androidx-colorPicker = { group = "com.jaredrummler", name = "colorpicker", version.ref = "colorpicker" }
+
+#implementation("com.jsoizo:kotlin-csv-jvm:1.10.0") // for JVM platform
+#implementation("com.jsoizo:kotlin-csv-js:1.10.0") // for Kotlin JS platform
+androidx-kotlinCsvJVM = { module = "com.jsoizo:kotlin-csv-jvm", version.ref = "csv" }
+#androidx-kotlinCsvJS = { module = "com.jsoizo:kotlin-csv-js", version.ref = "csv" }
+
+#implementation 'com.github.jahirfiquitiva:TextDrawable:1.0.3'
+androidx-textDrawable = { module = "com.github.jahirfiquitiva:TextDrawable", version.ref = "textDrawable" }
+
+#'com.timehop.stickyheadersrecyclerview:library:
+androidx-stickyHeadersRecyclerView = { module = "com.timehop.stickyheadersrecyclerview:library", version.ref = "stickyHeadersRecyclerView" }
+
+#<groupId>net.sf.biweekly</groupId>
+androidx-biweekly = { group = "net.sf.biweekly", name = "biweekly", version.ref = "biweekly" }
+
+#    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+#    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+androidx-appCenter = { module = "com.microsoft.appcenter:appcenter-analytics", version.ref = "appCenterSdkVersion" }
+androidx-appCenterCrashes = { module = "com.microsoft.appcenter:appcenter-crashes", version.ref = "appCenterSdkVersion" }
+
+#'com.bigkoo:quicksidebar:1.0.3'
+androidx-quickSideBar = { group = "com.bigkoo",name = "quicksidebar" , version.ref = "quickSideBar" }
+
+#implementation 'com.github.bumptech.glide:glide:4.16.0'
+androidx-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+androidx-glideCompiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+
+#implementation 'com.github.GrenderG:Toasty:1.5.2'
+androidx-toasty = { group = "com.github.GrenderG", name = "Toasty", version.ref = "toasty"}
+
+#implementation 'com.github.sephiroth74:android-target-tooltip:Tag'
+androidx-sephiroth74 = { module = "com.github.sephiroth74:android-target-tooltip", version.ref = "targetTooltip" }
+
+#org.jetbrains.kotlin:kotlin-stdlib-jdk8
+androidx-kotlinStdlibJdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" ,version.ref = "kotlin"}
+
+#org.jetbrains.kotlin:kotlin-stdlib
+androidx-kotlinStdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" ,version.ref = "kotlin"}
+
+#org.jetbrains.kotlin:kotlin-test-junit
+#androidx-kotlinStdlibTestJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit" ,version.ref = "kotlin"}
+
+#org.jetbrains.kotlin:kotlin-gradle-plugin
+#androidx-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin" ,version.ref = "kotlin"}
+
+#org.jetbrains.kotlin:kotlin-allopen:${Versions.kotlin
+#androidx-kotlinAllOpen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+#safeArgs
+safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationArg" }
+#parcelize
+kotlin-parcelize = {id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+#kapt
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
