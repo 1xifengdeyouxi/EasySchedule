@@ -1,52 +1,61 @@
 package com.swu.easyschedule.base
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.swu.easyschedule.R
 import com.swu.easyschedule.utils.BR
 
-abstract class BaseActivity<T : ViewDataBinding, M : BaseViewModel> : AppCompatActivity() {
+abstract class BaseFragment<T : ViewDataBinding, M : BaseViewModel> :Fragment(){
     abstract val layoutId: Int
+    lateinit var databinding: T
     abstract val viewModel: M
+    open val isChildFragment: Boolean = false
+    var mHavePID = true
 
-    val databinding: T by lazy {
-        DataBindingUtil.setContentView(this, layoutId)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        databinding.lifecycleOwner = this
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        databinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         databinding.setVariable(BR.vm, viewModel)
+        databinding.lifecycleOwner = this
         initView()
         initData()
+        return databinding.root
     }
 
-    open fun initView() {}
-    open fun initData() {}
+    open fun initView(){}
+    open fun initData(){}
 
     //创建打开新的fragment界面
     fun openFragment(fragment: Fragment, tag: String = fragment.tag.toString()) {
-        supportFragmentManager
+        requireActivity().supportFragmentManager
             .beginTransaction()
             .addToBackStack(fragment.tag)
             .replace(
                 R.id.content,
                 fragment,
                 tag,
-            ).commit()
+            )
+            .commit()
     }
 
+
     fun openFragmentAllowLoss(fragment: Fragment, tag: String = fragment.tag.toString()) {
-        supportFragmentManager
+        requireActivity().supportFragmentManager
             .beginTransaction()
             .addToBackStack(fragment.tag)
             .replace(
                 R.id.content,
                 fragment,
                 tag,
-            ).commitAllowingStateLoss()
+            )
+            .commitAllowingStateLoss()
     }
 }

@@ -8,6 +8,6 @@ import androidx.lifecycle.ViewModel
  * @author: 1xifengdeyouxi
  * @time: 2025/8/11 10:14
  */
-class BaseViewModel : ViewModel() {
+open class BaseViewModel : ViewModel() {
     val showLoading: MutableLiveData<Boolean> = MutableLiveData()
 }
