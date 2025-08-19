@@ -30,6 +30,7 @@ biweekly = "0.6.8"
 appCenterSdkVersion = "5.0.6"
 quickSideBar = "1.0.3"
 targetTooltip = "2.0.3"
+hilt = "2.50"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -125,7 +126,8 @@ androidx-kotlinStdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" ,version
 
 #org.jetbrains.kotlin:kotlin-allopen:${Versions.kotlin
 #androidx-kotlinAllOpen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
-
+#com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}
+androidx-hiltGradlePlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -137,3 +139,4 @@ safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigat
 kotlin-parcelize = {id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 #kapt
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+hilt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }

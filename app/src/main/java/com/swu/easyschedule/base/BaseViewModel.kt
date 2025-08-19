@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
  * @author: 1xifengdeyouxi
  * @time: 2025/8/11 10:14
  */
-open class BaseViewModel : ViewModel() {
+@HiltViewModel
+open class BaseViewModel @Inject constructor() : ViewModel() {
     val showLoading: MutableLiveData<Boolean> = MutableLiveData()
 }

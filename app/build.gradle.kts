@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
+
     alias(libs.plugins.safe.args)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.kapt)
@@ -156,4 +157,8 @@ dependencies {
     //implementation(libs.androidx.kotlinGradlePlugin)
     //const val kotlinAllOpen = "org.jetbrains.kotlin:kotlin-allopen:${Versions.kotlin}"
     //implementation(libs.androidx.kotlinAllOpen)
+
+    //依赖注入 com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}
+    implementation(libs.androidx.hiltGradlePlugin)
+    kapt("com.google.dagger:hilt-compiler:2.50")
 }
