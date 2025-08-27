@@ -1,4 +1,4 @@
-package com.swu.easyschedule.viewModel
+package com.swu.easyschedule.viewmodel
 
 import com.swu.easyschedule.base.BaseViewModel
 
