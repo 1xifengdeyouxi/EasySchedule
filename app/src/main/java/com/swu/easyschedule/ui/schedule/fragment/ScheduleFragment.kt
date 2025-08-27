@@ -1,18 +1,19 @@
 package com.swu.easyschedule.ui.schedule.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import com.swu.easyschedule.R
 import com.swu.easyschedule.base.BaseFragment
 import com.swu.easyschedule.databinding.FragmentScheduleBinding
-import com.swu.easyschedule.viewmodel.MainActivityViewModel
-import com.swu.easyschedule.viewModel.ScheduleViewModel
+import com.swu.easyschedule.viewmodel.ScheduleViewModel
 
 
 class ScheduleFragment : BaseFragment<FragmentScheduleBinding, ScheduleViewModel>() {
-    override val layoutId: Int get() = R.layout.fragment_schedule
-    override val viewModel by viewModels<MainActivityViewModel>()
+    override fun layoutId() = R.layout.fragment_schedule
+
+    override fun obtainViewModel(): ScheduleViewModel = defaultViewModelProviderFactory.create(ScheduleViewModel::class.java)
+
+    override fun viewBinding(binding: FragmentScheduleBinding, viewModel: ScheduleViewModel) {
+    }
+
+    override fun observer() {
+    }
 }
