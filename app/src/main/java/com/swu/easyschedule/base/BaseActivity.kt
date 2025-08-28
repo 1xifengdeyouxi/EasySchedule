@@ -28,6 +28,8 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId())
         binding.lifecycleOwner = this
+        initView()
+        initData()
         viewBinding(binding, viewModel)
         observer()
     }
@@ -37,8 +39,8 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
     protected abstract fun viewBinding(binding: V, viewModel: VM)
     protected abstract fun observer()
 
-//    open fun initView() {}
-//    open fun initData() {}
+    open fun initView() {}
+    open fun initData() {}
 
     //创建打开新的fragment界面
     fun openFragment(fragment: Fragment, tag: String = fragment.tag.toString()) {

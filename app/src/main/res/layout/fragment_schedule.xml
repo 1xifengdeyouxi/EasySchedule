@@ -5,19 +5,40 @@
     tools:context=".ui.schedule.fragment.ScheduleFragment">
 
     <data>
+
         <variable
             name="ScheduleViewModel"
             type="com.swu.easyschedule.viewmodel.ScheduleViewModel" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/anko_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!-- 侧边栏-->
-        <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/anko_drawer_layout"
+        <!-- 主屏区域-->
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--操作栏-->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:subtitle="子标题"
+                    app:subtitleTextColor="@color/white"
+                    app:title="标题"
+                    app:titleTextColor="@color/white"
+                    app:titleTextAppearance="@style/ToolbarTitle"
+                    app:subtitleTextAppearance="@style/ToolbarSubtitle"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            </com.google.android.material.appbar.AppBarLayout>
 
             <!-- 课表显示区域 -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,20 +93,6 @@
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toEndOf="@id/anko_tv_week"
                     app:layout_constraintTop_toBottomOf="@id/anko_tv_date" />
-
-                <!-- Navigation Button -->
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/anko_ib_nav"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="16dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text=""
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toStartOf="@id/anko_tv_date"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- Add Button -->
                 <androidx.appcompat.widget.AppCompatTextView
@@ -155,194 +162,20 @@
                     app:layout_constraintTop_toBottomOf="@id/anko_tv_week" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <!-- 侧边栏 -->
-            <com.google.android.material.navigation.NavigationView
-                android:id="@+id/anko_nv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:background="?attr/colorSurface"
-                android:fitsSystemWindows="false"
-                app:headerLayout="@layout/nav_header"
-                app:menu="@menu/main_navigation_menu" />
-
-        </androidx.drawerlayout.widget.DrawerLayout>
-
-        <!-- 与drawable同级 底部弹窗-->
-        <FrameLayout
+        <!-- 侧边栏 -->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/anko_nv"
             android:layout_width="match_parent"
-            android:layout_height="360dp"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="?attr/colorSurface"
+            android:fitsSystemWindows="false"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/main_navigation_menu" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="320dp"
-                android:layout_gravity="bottom"
-                android:layout_margin="16dp"
-                app:cardBackgroundColor="?attr/colorSurface"
-                app:cardElevation="8dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:splitMotionEvents="false">
+    </androidx.drawerlayout.widget.DrawerLayout>
 
-                    <!-- Week Title -->
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/bottom_sheet_title_week"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="周数"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <!-- Change Week Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bottom_sheet_change_week_btn"
-                        style="@style/TextButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="修改当前周"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@id/bottom_sheet_title_week"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/bottom_sheet_title_week" />
-
-                    <!-- Week Scroll View -->
-                    <HorizontalScrollView
-                        android:id="@+id/bottom_sheet_sv_week"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:overScrollMode="never"
-                        android:scrollbars="none"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title_week">
-
-                        <com.google.android.material.button.MaterialButtonToggleGroup
-                            android:id="@+id/bottom_sheet_cg_week"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:singleSelection="true"
-                            app:selectionRequired="true" />
-
-                    </HorizontalScrollView>
-
-                    <!-- Schedule Title -->
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/bottom_sheet_title_schedule"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="多课表"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_sv_week" />
-
-                    <!-- Table Name RecyclerView -->
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/bottom_sheet_rv_table"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:overScrollMode="never"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title_schedule" />
-
-                    <!-- Manage Schedule Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bottom_sheet_manage_schedule_btn"
-                        style="@style/TextButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="管理"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@id/bottom_sheet_title_schedule"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/bottom_sheet_title_schedule" />
-
-                    <!-- Create Schedule Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bottom_sheet_create_schedule_btn"
-                        style="@style/TextButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="新建课表"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@id/bottom_sheet_title_schedule"
-                        app:layout_constraintEnd_toStartOf="@id/bottom_sheet_manage_schedule_btn"
-                        app:layout_constraintTop_toTopOf="@id/bottom_sheet_title_schedule" />
-
-                    <!-- Shortcut Title -->
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/bottom_sheet_title_shortcut"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="捷径"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_rv_table" />
-
-                    <!-- Time Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bottom_sheet_modify_time_btn"
-                        style="@style/TextButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="上课时间"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@id/bottom_sheet_bg_btn"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title_shortcut" />
-
-                    <!-- Change Background Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bottom_sheet_bg_btn"
-                        style="@style/TextButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="更换背景"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@id/bottom_sheet_check_course_btn"
-                        app:layout_constraintStart_toEndOf="@id/bottom_sheet_modify_time_btn"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title_shortcut" />
-
-                    <!-- Course Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bottom_sheet_check_course_btn"
-                        style="@style/TextButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="已添课程"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@id/bottom_sheet_question_btn"
-                        app:layout_constraintStart_toEndOf="@id/bottom_sheet_bg_btn"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title_shortcut" />
-
-                    <!-- QA Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bottom_sheet_question_btn"
-                        style="@style/TextButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="常见问题"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@id/bottom_sheet_check_course_btn"
-                        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_title_shortcut" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </FrameLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_add_class"
+        android:icon="@drawable/add_class"
+        android:title="add_class"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_download_class"
+        android:icon="@drawable/download_class"
+        android:title="download_class"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_share"
+        android:icon="@drawable/share"
+        android:title="share"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_more"
+        android:icon="@drawable/more"
+        android:title="share"
+        app:showAsAction="always" />
+</menu>

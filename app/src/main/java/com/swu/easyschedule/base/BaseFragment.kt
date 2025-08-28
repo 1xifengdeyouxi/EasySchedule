@@ -1,6 +1,7 @@
 package com.swu.easyschedule.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> :Fragment()
     protected abstract fun obtainViewModel(): VM
 
     private var isFirst: Boolean = true // 是否第一次加载
+    private val TAG = "BaseFragment"
     /**
      * 处理登出操作。
      * 当用户需要登出时，调用此方法。
@@ -44,6 +46,8 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> :Fragment()
 //        initErrorFeature(binding.root)
 //        initLoadingFeature(binding.root)
 //        initEmptyFeature(binding.root)
+        initView()
+        initData()
         observer()
         return binding.root
     }
@@ -52,19 +56,20 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> :Fragment()
         super.onResume()
         if (lifecycle.currentState == Lifecycle.State.STARTED && isFirst) {
             viewBinding(binding, viewModel)
+            Log.d(TAG, "onResume: 第一次进入 $isFirst")
             isFirst = false
         } else {
             onReStart(binding, viewModel)
+            Log.d(TAG, "onResume: 不是第一次进入 $isFirst")
         }
     }
+
 
     protected abstract fun viewBinding(binding: V, viewModel: VM)
     protected abstract fun observer()
     open fun onReStart(binding: V, viewModel: VM) {}
-
-//    open fun initView(){}
-//    open fun initData(){}
-
+    open fun initView() {}
+    open fun initData() {}
 
     //创建打开新的fragment界面
     fun openFragment(fragment: Fragment, tag: String = fragment.tag.toString()) {
