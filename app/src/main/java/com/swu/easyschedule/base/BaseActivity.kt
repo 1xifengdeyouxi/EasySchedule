@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.whenStarted
 import com.swu.easyschedule.R
 import com.swu.easyschedule.utils.BR
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
     protected lateinit var binding: V
@@ -41,6 +46,10 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
     open fun initView() {}
     open fun initData() {}
+
+    fun launch(block: suspend CoroutineScope.() -> Unit): Job = lifecycleScope.launch {
+        lifecycle.whenStarted(block)
+    }
 
     //创建打开新的fragment界面
     fun openFragment(fragment: Fragment, tag: String = fragment.tag.toString()) {
