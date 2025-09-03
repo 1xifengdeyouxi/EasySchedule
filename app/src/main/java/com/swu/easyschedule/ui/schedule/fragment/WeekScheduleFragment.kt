@@ -19,6 +19,8 @@ import es.dmoral.toasty.Toasty
 class WeekScheduleFragment : BaseFragment<FragmentWeekScheduleBinding, ScheduleViewModel>() {
     private var currentWeek = 1 // 当前周数
     private var courseDateList: MutableList<CourseBean> = mutableListOf()
+    private val fixedColumnIndex = 0 // 要固定高度的行索引（第一行）
+    private val fixedColumnWidth = 100 // 固定行的高度（dp）
     private var adapter = object : BaseQuickAdapter<CourseBean, QuickViewHolder>(courseDateList) {
         override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: CourseBean?) {
             // 根据位置设置不同高度
@@ -29,15 +31,15 @@ class WeekScheduleFragment : BaseFragment<FragmentWeekScheduleBinding, ScheduleV
                 // 固定设置固定宽度
                 Log.d(TAG, "位置： $position 固定行高度：${dpToPx(fixedColumnWidth)}px")
                 params.width = dpToPx(fixedColumnWidth)
+                holder.itemView.setBackgroundResource(R.color.black)
             } else {
                 // 其他行设置为0，让其按权重分配
-                params.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                params.width = ViewGroup.LayoutParams.MATCH_PARENT
             }
             holder.itemView.layoutParams = params
             holder.setText(R.id.item_text, item?.courseName)
             holder.setText(R.id.item_text1, item?.day.toString())
         }
-
         override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): QuickViewHolder {
             return QuickViewHolder(R.layout.item_schedule_fixed_column, parent)
         }
@@ -45,7 +47,7 @@ class WeekScheduleFragment : BaseFragment<FragmentWeekScheduleBinding, ScheduleV
 
     var course: CourseBean = CourseBean(
         id = 1,
-        courseName = "android",
+        courseName = "ad",
         day = 1,
         room = "biejing",
         teacher = "ushio",
@@ -70,8 +72,7 @@ class WeekScheduleFragment : BaseFragment<FragmentWeekScheduleBinding, ScheduleV
     override fun observer() {
     }
 
-    private val fixedColumnIndex = 0 // 要固定高度的行索引（第一行）
-    private val fixedColumnWidth = 60 // 固定行的高度（dp）
+
 
     override fun initView() {
         // 从参数获取当前周数
@@ -94,7 +95,22 @@ class WeekScheduleFragment : BaseFragment<FragmentWeekScheduleBinding, ScheduleV
 //            binding.courseRecyclerView.adapter = adapter
 //        }
         for(i in 0..10){
-            courseDateList.add(course.apply { day = i })
+            courseDateList.add(
+                CourseBean(
+                    id = i + 1,
+                    courseName = "课程 ${i + 1}",
+                    day = i % 8,
+                    room = "教室 ${i % 5 + 1}",
+                    teacher = "教师 ${i % 3 + 1}",
+                    startNode = 1,
+                    step = 2,
+                    startWeek = 1,
+                    endWeek = 16,
+                    type = 1,
+                    color = "#666666",
+                    tableId = 1
+                )
+            )
         }
         Toasty.info(requireContext(), "courseDateList：${courseDateList.size}").show()
 //        adapter = CourseAdapter(R.layout.item_schedule_fixed_column,courseDateList) // 需自定义课程适配器
