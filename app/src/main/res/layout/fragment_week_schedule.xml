@@ -20,18 +20,19 @@
             android:id="@+id/week_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:textSize="18sp"
             android:textStyle="bold"
             android:text="标题111"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="16dp"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <!-- 课程列表（ RecyclerView/网格布局） -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/course_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:background="#AD9B9B"
             app:layout_constraintTop_toBottomOf="@id/week_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
